@@ -2,109 +2,154 @@ Feature: Validation of POST request in Program Module
 
   Background: Setup Authorization
     Given User sets Authorization to No Auth
-
-  Scenario: Verify POST request with valid base URL and valid data
-    Given User sets request for Program module with base URL with valid endpoint and valid request body
-    When User send POST request with data from "<SheetName>" and <RowNumber>
-    Then User gets success message with status code "201" in response body
+    
+@test1
+  Scenario Outline: Verify POST request with valid base URL and valid request body
+    Given User sets request for Program module with valid base URL and valid request body
+    When User send POST request with all data fields from "<SheetName>" and <RowNumber>
+    Then User gets success message with status code "201" in response body with message Program created
 
     Examples: 
       | SheetName            | RowNumber |
       | ProgramPOSTValidData |         0 |
+      
+      
+@test2
+  Scenario Outline: Verify POST request with valid base URL and valid request body
+    Given User sets request for Program module with valid base URL and valid request body
+    When User send POST request with mandatory data fields from "<SheetName>" and <RowNumber>
+    Then User gets success message with status code "201" in response body with message Program created
 
-  Scenario: Verify POST request to post data into program with invalid base URL and valid data
+    Examples: 
+      | SheetName            | RowNumber |
+      | ProgramPOSTValidData |         1 |
+
+@test3
+  Scenario Outline: Verify POST request with invalid base URL and valid request body
     Given User sets request for Program module with invalid base URL and valid request body
-    When User sends POST request with invalid URL and data from "<SheetName>" and <Rownumber>
-    Then User gets Bad Request error message with status code "404" in response body
+    When User sends POST request with invalid URL and valid data from "<SheetName>" and <RowNumber>
+    Then User gets Bad Request error message with status code "404" in response body with message Invalid URL
 
     Examples: 
-      | SheetName              | Rownumber |
-      | ProgramPOSTinvalidData |         1 |
+      | SheetName              | RowNumber |
+      | ProgramPOSTValidData 	 |         0 |
+@test4
+  Scenario: Verify POST request with valid URL and Blank data fields
+    Given User sets request for Program module with valid base URL and Blank paramertes in request body
+    When User sends POST request with Blank values in all fields in request body
+    Then User gets Bad Request error message with status code "400" in response body with message Enter mandatory fields
+    
+@test5
+  Scenario: Verify POST request with valid URL and Blank data fields
+    Given User sets request for Program module with valid base URL and Blank paramertes in request body
+    When User sends POST request with Blank values in all mandatory the fields in request body
+    Then User gets Bad Request error message with status code "400" in response body with message Enter mandatory fields
+    
+@test6
+  Scenario Outline: Verify POST request with valid URL and Blank data fields
+    Given User sets request for Program module with valid base URL and Blank value in programName field
+    When User sends POST request with Blank values in programName field in request body from "<SheetName>" and <Rownumber>
+    Then User gets Bad Request error message with status code "400" in response body with message Enter mandatory fields
+    
+        Examples: 
+      | SheetName            		 | Rownumber |
+      | ProgramPOSTNoProgramName |         0 |
+    
+@test7
+  Scenario Outline: Verify POST request with valid URL and Blank data fields
+    Given User sets request for Program module with valid base URL and Blank value in programDescription field
+    When User sends POST request with Blank values in programDescription field in request body from "<SheetName>" and <Rownumber>
+    Then User gets success message with status code "201" in response body with message Program created
+    
+        Examples: 
+      | SheetName            						| Rownumber |
+      | ProgramPOSTNOProgramDescription |         0 |
+    
+@test8
+  Scenario Outline: Verify POST request with valid URL and Blank data fields
+    Given User sets request for Program module with valid base URL and Blank value in programStatus field
+    When User sends POST request with Blank values in programStatus field in request body from "<SheetName>" and <Rownumber>
+    Then User gets Internal Server Error message with status code "500": Null Values
+    
+        Examples: 
+      | SheetName            			 | Rownumber |
+      | ProgramPOSTNoProgramStatus |         0 |
 
-  Scenario: Verify POST request to post data into program with valid URL and Blank data fields
-    Given User sets request for Program module with valid base URL and valid paramertes in request body
+    
+@test9
+  Scenario: Verify POST request with valid URL and null data fields
+    Given User sets request for Program module with valid base URL and NULL paramertes in request body
+    When User sends POST request with Null values in all fields in request body
+    Then User gets Internal Server Error message with status code "500": Null Values
+    
+@test10
+  Scenario: Verify POST request with valid URL and null data fields
+    Given User sets request for Program module with valid base URL and NULL paramertes in request body
     When User sends POST request with Null values in all mandatory fields in request body
-    Then User gets Bad Request error message with status code "400" in response body
-    
-  Scenario: Verify POST request to post data into program with valid base URL and invalid data
-    Given User sets request for Program module with valid base URL and invalid data
-    When User sends POST request with Null Value programName parameter in request body
-    Then User gets Bad Request error message with status code "400" in response body
-
-  Scenario: Verify POST request to post data into program with valid base URL and invalid data
-    Given User sets request for Program module with valid base URL and invalid data
-    When User sends POST request without programDescription parameter in the request body
-    Then User gets Bad Request error message with status code "400" in response body
-
-  Scenario Outline: Verify POST request to post data into program with valid base URL and invalid data
-    Given User sets request for Program module with valid base URL and invalid data
-    When User sends POST request with Null value in programDescription parameter from "<SheetName>" and <Rownumber>
-    Then User gets Bad Request error message with status code "400" in response body
-
-    Examples: 
-      | SheetName              | Rownumber |
-      | RequestBodyInvalidData |         1 |
-
-  Scenario Outline: Verify POST request to post data into program with valid base URL and invalid data
-    Given User sets request for Program module with valid base URL and invalid data
-    When User sends POST request without programStatus parameter from "<SheetName>" and <Rownumber>
-    Then User gets Bad Request error message with status code "400" in response body
-
-    Examples: 
-      | SheetName   | Rownumber |
-      | NoProgStaus |         0 |
-
-  Scenario Outline: Verify POST request to post data into program with valid base URL and invalid data
-    Given User sets request for Program module with valid base URL and invalid data
-    When User sends POST request with null value for programStatus parameter from "<SheetName>" and <Rownumber>
-    Then User gets Bad Request error message with status code "400" in response body
-
-    Examples: 
-      | SheetName              | Rownumber |
-      | RequestBodyInvalidData |         0 |
-
-   Scenario: Verify POST request to post data into program with valid base URL and invalid data
-    Given User sets request for Program module with valid base URL and invalid data
-    When User sends POST request with creationTime parameter value as alphanumeric in the request body 
-    Then User gets Bad Request error message with status code "400" in response body
-
-
-  Scenario: Verify POST request to post data into program with valid base URL and invalid data
-    Given User sets request for Program module with valid base URL and invalid data
-    When User sends POST request with creationTime parameter value as special characters in the request body
-    Then User gets Bad Request error message with status code "400" in response body
+    Then User gets Internal Server Error message with status code "500": Null Values
     
 
-  Scenario: Verify POST request to post data into program with valid base URL and invalid data
-    Given User sets request for Program module with valid base URL and invalid data
-    When User sends POST request without lastModTime parameter in the request body
-    Then User gets Bad Request error message with status code "400" in response body
+    
+@test11
+  Scenario Outline: Verify POST request with valid URL and null data fields
+    Given User sets request for Program module with valid base URL and NULL value in programName field
+    When User sends POST request with Null values in programName field in request body from "<SheetName>" and <Rownumber>
+    Then User gets Internal Server Error message with status code "500": Null Values
+    
+        Examples: 
+      | SheetName            | Rownumber |
+      | ProgramPOSTValidData |         0 |
+    
+@test12
+  Scenario Outline: Verify POST request with valid URL and null data fields
+    Given User sets request for Program module with valid base URL and NULL value in programDescription field
+    When User sends POST request with Null values in programDescription field in request body from "<SheetName>" and <Rownumber>
+    Then User gets success message with status code "201" in response body with message Program created
+    
+        Examples: 
+      | SheetName            | Rownumber |
+      | ProgramPOSTValidData |         0 |
+    
+@test13
+  Scenario Outline: Verify POST request with valid URL and null data fields
+    Given User sets request for Program module with valid base URL and NULL value in programStatus field
+    When User sends POST request with Null values in programStatus field in request body from "<SheetName>" and <Rownumber>
+    Then User gets Internal Server Error message with status code "500": Null Values
+    
+        Examples: 
+      | SheetName            | Rownumber |
+      | ProgramPOSTValidData |         0 |
+    
+    @test14
+  Scenario Outline: Verify POST request with valid URL and without one mandatory field
+    Given User sets request for Program module with valid base URL and without one mandatory field
+    When User sends POST request without programName field in request body from "<SheetName>" and <Rownumber>
+    Then User gets Bad Request error message with status code "400" in response body with message Enter mandatory fields
+    
+        Examples: 
+      | SheetName            		 | Rownumber |
+      | ProgramPOSTNoProgramName |         0 |
+    
+@test15
+  Scenario Outline: Verify POST request with valid URL and without one mandatory field
+    Given User sets request for Program module with valid base URL and without one mandatory field
+    When User sends POST request without programDescription field in request body from "<SheetName>" and <Rownumber>
+    Then User gets Bad Request error message with status code "400" in response body with message Enter mandatory fields
+    
+        Examples: 
+      | SheetName            				 		| Rownumber |
+      | ProgramPOSTNOProgramDescription |         0 |
+    
+@test16
+  Scenario Outline: Verify POST request with valid URL and without one mandatory field
+    Given User sets request for Program module with valid base URL and without one mandatory field
+    When User sends POST request without programStatus field in request body from "<SheetName>" and <Rownumber>
+    Then User gets Bad Request error message with status code "400" in response body with message Enter mandatory fields
+    
+        Examples: 
+      | SheetName            			 | Rowumber |
+      | ProgramPOSTNoProgramStatus |         0 |
+    
+   
     
 
-  Scenario: Verify POST request to post data into program with valid base URL and invalid data
-    Given User sets request for Program module with valid base URL and invalid data
-    When User sends POST request with lastModTime parameter value as an Empty String in the Request body from "<SheetName>" and <Rownumber>
-    Then User gets Bad Request error message with status code "400" in response body
-    
-      Examples: 
-      | SheetName              | Rownumber |
-      | RequestBodyInvalidData |         0 |
-
-  Scenario: Verify POST request to post data into program with valid base URL and invalid data
-    Given User sets request for Program module with valid base URL and invalid data
-    When User sends POST request with lastModTime parameter value as alphabetnumeric in the request body
-    Then User gets Bad Request error message with status code "400" in response body
-
-  Scenario: Verify POST request to post data into program with valid base URL and invalid data
-    Given User sets request for Program module with valid base URL and invalid data
-    When User sends POST requestwith lastModTime parameter value as special characters in the request body
-    Then User gets Bad Request error message with status code "400" in response body
-
-  Scenario: Verify POST request to post data into program with valid base URL and invalid data
-    Given User sets request for Program module with valid base URL and invalid data
-    When User sends POST request with lastModTime parameter value as Date format from "<SheetName>" and <Rownumber>
-    Then User gets Bad Request error message with status code "400" in response body
-
-    Examples: 
-      | SheetName         | Rownumber |
-      | LastModDateFormat |         0 |
