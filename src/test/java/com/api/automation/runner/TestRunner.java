@@ -6,7 +6,8 @@ import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
 
 @RunWith(Cucumber.class)
-@CucumberOptions(features = {"./src/test/resources/Features"}, 
+@CucumberOptions(features = {"./src/test/resources/Features/ProgramModule_POSTProgram.feature"}, 
+//tags = "@test15",
 				glue = {"com.api.automation.stepDefinitions"},
 				monochrome = true, 
 				dryRun = false, 

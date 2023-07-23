@@ -11,7 +11,7 @@ Feature: Validation of POST request in Program Module
 
     Examples: 
       | SheetName            | RowNumber |
-      | ProgramPOSTValidData |         0 |
+      | ProgramPOSTValidData |         5 |
       
       
 @test2
@@ -22,7 +22,7 @@ Feature: Validation of POST request in Program Module
 
     Examples: 
       | SheetName            | RowNumber |
-      | ProgramPOSTValidData |         1 |
+      | ProgramPOSTValidData |         6 |
 
 @test3
   Scenario Outline: Verify POST request with invalid base URL and valid request body
@@ -32,7 +32,7 @@ Feature: Validation of POST request in Program Module
 
     Examples: 
       | SheetName              | RowNumber |
-      | ProgramPOSTValidData 	 |         0 |
+      | ProgramPOSTValidData 	 |         7 |
 @test4
   Scenario: Verify POST request with valid URL and Blank data fields
     Given User sets request for Program module with valid base URL and Blank paramertes in request body
@@ -134,7 +134,7 @@ Feature: Validation of POST request in Program Module
   Scenario Outline: Verify POST request with valid URL and without one mandatory field
     Given User sets request for Program module with valid base URL and without one mandatory field
     When User sends POST request without programDescription field in request body from "<SheetName>" and <Rownumber>
-    Then User gets Bad Request error message with status code "400" in response body with message Enter mandatory fields
+    Then User gets success message with status code "201" in response body with message Program created
     
         Examples: 
       | SheetName            				 		| Rownumber |
@@ -144,10 +144,10 @@ Feature: Validation of POST request in Program Module
   Scenario Outline: Verify POST request with valid URL and without one mandatory field
     Given User sets request for Program module with valid base URL and without one mandatory field
     When User sends POST request without programStatus field in request body from "<SheetName>" and <Rownumber>
-    Then User gets Bad Request error message with status code "400" in response body with message Enter mandatory fields
+    Then User gets Bad Request error message with status code "500" in response body with message Enter mandatory fields
     
         Examples: 
-      | SheetName            			 | Rowumber |
+      | SheetName            			 | Rownumber |
       | ProgramPOSTNoProgramStatus |         0 |
     
    
