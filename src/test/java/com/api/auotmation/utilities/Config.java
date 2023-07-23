@@ -7,5 +7,5 @@ public class Config {
 	public static final String excelFilePath="./Data Files/API-Phase2-RESTAssuredCucumber-Data.xlsx";
 	//public static final String excelFilePath="/API.Phase2.RestAssuredCucumber/Data Files/API-Phase2-RESTAssuredCucumber-Data.xlsx";
 	//public static final String DeleteProgram_URL = "https://lms-backend-service.herokuapp.com/lms/deletebyprogid";
-
+   public static final String BATCHMOD_DELETE_URL =base_URL + "/batches/{batchId}";
 }
