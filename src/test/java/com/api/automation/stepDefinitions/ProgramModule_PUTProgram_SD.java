@@ -142,8 +142,7 @@ public class ProgramModule_PUTProgram_SD extends BaseClass {
 	@Given("User sets valid URL with invalid program id and mandatory Payload")
 	public void user_sets_valid_url_with_invalid_program_id_and_mandatory_payload() {
 		JSONObject body = new JSONObject();
-	    //body.put("programId",11366);
-		body.put("programName", "July23-AssuredNinjas-SDET-185");
+	  	body.put("programName", "July23-AssuredNinjas-SDET-185");
 		body.put("programDescription","API Testing");
 		body.put("programStatus", "Active");
 		body.put("creationTime", "2023-07-22T16:50:15.034+00:00");
@@ -308,24 +307,7 @@ public class ProgramModule_PUTProgram_SD extends BaseClass {
 	}
 	}
 	
-		
-		/*this.uri = Config.base_URL;
-		this.request=RestAssured.given();
-		response = this.request
-				.contentType(ContentType.JSON)
-				.accept(ContentType.JSON)
-				.when()
-				 .get("/programs/10366");
-		
-		 int statusCode=this.response.getStatusCode();
-		 System.out.println("------StatusCode for PUT request with empty payload = "+ statusCode);
-		 response.then().
-			log().ifValidationFails().
-			assertThat().
-			statusCode(200).
-		     and().
-			contentType(ContentType.JSON).body(JsonSchemaValidator.matchesJsonSchemaInClasspath("./src/test/resources/JSONSchemas/allSchema.json"));
-	}*/
+	
 	//------------------------Scenario 9 ---------------------------------------------------------
 
 		@Given("User set request for Program module with valid base url and valid request body by valid program name")
