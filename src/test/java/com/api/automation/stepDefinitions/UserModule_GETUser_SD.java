@@ -60,7 +60,7 @@ public class UserModule_GETUser_SD extends BaseClass {
 		}
 	}
 
-	// Scenario 2
+	// Scenario 2- A user attempts to retrieve all users using an invalid endpoint
 
 	@When("The user sends the GET request with an invalid endpoint")
 	public void the_user_sends_the_get_request_for_all_users_to_a_valid_base_with_an_invalid_endpoint() {
