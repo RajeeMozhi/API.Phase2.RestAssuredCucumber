@@ -1,4 +1,4 @@
-Feature: Validation of PUT request in Program Module. 
+Feature: Validation of PUT request in Program Module
 
 Background: Setup Authorization 
 	Given User sets Authorization to No Auth 

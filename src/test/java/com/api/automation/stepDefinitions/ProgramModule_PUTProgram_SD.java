@@ -42,7 +42,7 @@ public class ProgramModule_PUTProgram_SD extends BaseClass {
 		cd=new CurrentDate();
 	}
 	
-	//-----------------SCENARIO Prerequest - Program Creation------------------------------------------------------		
+	//-----------------SCENARIO Prerequest - Program Creation-----------------------------------------------------------	
 	@Given("User sets request for Program module with base URL with valid endpoint and valid request body")
 	public void user_sets_request_for_program_module_with_base_url_with_valid_endpoint_and_valid_request_body() {
 		this.uri = Config.programMod_POST_URL;
