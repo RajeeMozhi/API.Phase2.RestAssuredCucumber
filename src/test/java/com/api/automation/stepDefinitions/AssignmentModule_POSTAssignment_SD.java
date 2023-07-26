@@ -199,7 +199,7 @@ public class AssignmentModule_POSTAssignment_SD extends BaseClass {
 				"An inactive Staff creates and grades a new assignment, Inactive staff user can not create or grade assignment");
 	}
 
-//Scenario 12 An active Staff attempts to create and grades a new assignment without a mandatory field
+//Scenario 12 A active Staff attempts to create and grades a new assignment without a mandatory field
 	@When("User create a POST request to to create and grades a new assignment without a mandatory field by active staff  from {string} and {int}")
 	public void user_create_a_post_request_to_to_create_and_grades_a_new_assignment_without_a_mandatory_field_by_active_staff_from_and(
 			String SheetName, Integer RowNumber)
@@ -210,7 +210,7 @@ public class AssignmentModule_POSTAssignment_SD extends BaseClass {
 				"An active Staff creates and an inactive Student grades a new assignment. Assignment can not be created without mandatory field");
 	}
 
-	// Scenario 13 An Active Admin creates and grades a new assignment to invalid
+	// Scenario 13  Active Admin creates and grades a new assignment to invalid
 	// end point
 	@Given("User sets a POST Request to valid base URL and invalid end point")
 	public void user_sets_a_post_request_to_valid_base_url_and_invalid_end_point() {

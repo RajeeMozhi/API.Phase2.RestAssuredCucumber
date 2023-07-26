@@ -1,14 +1,10 @@
 package com.api.automation.stepDefinitions;
 
-import static org.junit.Assert.assertEquals;
-
 import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
-import org.junit.Assert;
-
 import com.api.auotmation.utilities.Config;
 import com.api.auotmation.utilities.ExcelReader;
 import com.api.automation.base.BaseClass;
@@ -107,7 +103,6 @@ public class UserModule_GETUser_SD extends BaseClass {
 
 		List<Map<String, String>> getData = excelReader.getData(Config.excelFilePath, SheetName);
 
-		@SuppressWarnings("unused")
 		String userId = getData.get(RowNumber.intValue()).get("Valid User ID");
 
 		response = this.request.when().get(this.uri + Config.GetUserByID_valid_endpoint + userId).then().log().all()
@@ -215,7 +210,7 @@ public class UserModule_GETUser_SD extends BaseClass {
 		}
 	}
 
-	// Scenario 8 Invalid- A user attempts to retrieve all Users with roles
+	// Scenario 8-Invalid- A user attempts to retrieve all Users with roles
 	@When("User sends the HTTPS request to an invalid end point")
 	public void user_sends_the_https_request_to_an_invalid_end_point() {
 		response = this.request.get(this.uri + Config.GetAllUsersWithRoles_invalid_endpoint);
