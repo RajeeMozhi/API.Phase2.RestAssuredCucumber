@@ -40,38 +40,7 @@ public class TestUtil {
 		return response;
 		
 	}
-	//assignment module_DeleteProg
-//	public static Response createAndSendPostRequestForAssignment()  {
-//		String uri = Config.assignmentMod_POST_URL;
-//		RequestSpecification request = RestAssured.given().header("Content-Type", "application/json");		
-//		Map<String, String> rowData = getRowDataFromExcel(Config.programDeleteExcelFilePath, "createAssignment",0);
-//		String assignmentName = rowData.get("assignmentName") +RandomStringUtils.randomNumeric(3);
-//		String assignmentDescription = rowData.get("assignmentDescription");
-//		String dueDate = rowData.get("dueDate");
-//		String graderId = rowData.get("graderId");
-//		String assignmentId = rowData.get("assignmentId");
-//		String batchID = rowData.get("batchID");
-//		String createdBy = rowData.get("createdBy");
-//
-//		JSONObject body = new JSONObject();
-//		body.put("assignmentName", assignmentName);
-//		body.put("assignmentDescription", assignmentDescription);
-//		body.put("dueDate", dueDate);
-//		body.put("graderId", graderId);
-//		body.put("createdBy", createdBy);
-//		body.put("batchId", batchID);
-//		
-//		System.out.println("createAndSendPostRequestForAssignment called \n" + body.toJSONString());
-//		
-//		Response response = request
-//				.body(body.toJSONString())
-//				.when()
-//				.post(uri)
-//				.then()
-//				.log().all().extract().response();	
-//		return response;
-//		
-	//}
+	
 	
 	public static Map<String,String> getRowDataFromExcel(String excelFilePath , String SheetName, int Rownumber)   {
 		ExcelReader excelReader = new ExcelReader();
@@ -93,5 +62,36 @@ public class TestUtil {
 		return (timestamp);
 	}
 
+	//assignment module_DeleteProg
+	
+	public static Response createAndSendPostRequestForAssignment()  {
+		String uri = Config.assignmentMod_POST_URL;
+		RequestSpecification request = RestAssured.given().header("Content-Type", "application/json");		
+		Map<String, String> rowData = getRowDataFromExcel(Config.programDeleteExcelFilePath, "createAssignment",0);
+		String assignmentName = rowData.get("assignmentName") +RandomStringUtils.randomNumeric(3);
+		String assignmentDescription = rowData.get("assignmentDescription");
+		String dueDate = rowData.get("dueDate");
+		String graderId = rowData.get("graderId");
+		String batchID = rowData.get("batchID");
+		String createdBy = rowData.get("createdBy");
 
+		JSONObject body = new JSONObject();
+		body.put("assignmentName", assignmentName);
+		body.put("assignmentDescription", assignmentDescription);
+		body.put("dueDate", dueDate);
+		body.put("graderId", graderId);
+		body.put("createdBy", createdBy);
+		body.put("batchId", batchID);
+		
+		System.out.println("createAndSendPostRequestForAssignment called \n" + body.toJSONString());
+		
+		Response response = request
+				.body(body.toJSONString())
+				.when()
+				.post(uri)
+				.then()
+				.log().all().extract().response();	
+		return response;
+		
+	}
 }
