@@ -12,11 +12,14 @@ import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 
 import com.api.auotmation.utilities.*;
 
+import io.restassured.response.Response;
+
 
 public class BaseClass {
-
+	//public static Integer programID = null;
+	public static String name;
 	public static final Logger logger = LogManager.getLogger(BaseClass.class.getName());
-
+   // public static	Response response;
 	public static String randomestring()
 	{
 		String generateinvalidID=RandomStringUtils.randomNumeric(3);
@@ -24,8 +27,15 @@ public class BaseClass {
 	}
 	
 	public static String DynamicprogName () {
-		String name = "July23-AssuredNinjas-SDET-" + randomestring();
+		 name = "July23-AssuredNinjas-SDET-" + randomestring();
 		return(name);
+	}
+	
+	public static String DynamicBatchName () {
+		//Jul23-TeamName-ProgramName-BatchName-serialnumber 
+		String Batchname = "July23-AssuredNinjas-SDET-SDET55-" + randomestring();
+
+		return(Batchname);
 	}
 	
 	public static String Timestamp() {
