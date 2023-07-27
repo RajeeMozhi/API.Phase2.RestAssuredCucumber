@@ -1,0 +1,1 @@
+{"uuid":"b151b16c-6991-4e07-8a4d-07b33eecca90","name":"Scenario Outline: Verify POST request for Batch module  with valid endpoint and valid request body","children":["d7971275-0553-4150-b66d-528e0fb6ae19"],"befores":[],"afters":[],"start":1690303695882,"stop":1690303696432}

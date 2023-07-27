@@ -1,4 +1,7 @@
-[INFO ] 2023-07-21 11:13:18,718 BaseClass.user_sets_authorization_to_no_auth() - Authorization is set as No Auth
-[INFO ] 2023-07-21 11:13:18,778 BaseClass.user_sets_request_for_program_module_with_valid_endpoint_and_valid_request_body() - Request set for Program module with valid base URL and valid data
-[INFO ] 2023-07-21 11:13:20,614 BaseClass.user_send_post_request_with_data_from_and() - Post Request sent with valid request body
-[INFO ] 2023-07-21 11:13:20,643 BaseClass.user_should_get_status_code_for_post_request_with_valid_endpoint_and_valid_request_body() - Post Request Successful
+[INFO ] 2023-07-27 16:27:11,322 BaseClass.user_sets_authorization_to_no_auth() - Authorization is set as No Auth
+[INFO ] 2023-07-27 16:27:11,466 BaseClass.user_sets_request_for_updating_user_role_program_batch_in_user_module_with_valid_endpoint_and_mandatory_fields() - Request set for updating UserRoleProgramBatch in User module with valid base URL and valid data
+[INFO ] 2023-07-27 16:27:21,579 BaseClass.user_send_put_request_with_data_for_user_role_program_batch_in_user_module_from_and() - Put Request sent with valid request body
+[INFO ] 2023-07-27 16:27:21,933 BaseClass.user_sets_authorization_to_no_auth() - Authorization is set as No Auth
+[INFO ] 2023-07-27 16:27:21,957 BaseClass.user_sets_request_for_updting_user_role_program_batch_in_user_module_with_invalid_endpoint() - Request set for updating UserRoleProgramBatch in User module with invalid base URL and valid data
+[INFO ] 2023-07-27 16:27:24,000 BaseClass.user_sets_authorization_to_no_auth() - Authorization is set as No Auth
+[INFO ] 2023-07-27 16:27:24,007 BaseClass.user_sets_request_for_updating_user_role_program_batch_in_user_module_with_valid_endpoint() - Request set for updating UserRoleProgramBatch in User module with valid base URL and Missing data

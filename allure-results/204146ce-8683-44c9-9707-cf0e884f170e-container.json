@@ -1,0 +1,1 @@
+{"uuid":"204146ce-8683-44c9-9707-cf0e884f170e","name":"Scenario: Verify Batch Module POST request with valid URL and Blank data fields (only mendatory fields empty)","children":["ba0c2853-06b2-4972-b5d8-c2876450a112"],"befores":[],"afters":[],"start":1690395626653,"stop":1690395627082}

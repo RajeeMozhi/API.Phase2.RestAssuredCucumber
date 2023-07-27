@@ -1,0 +1,1 @@
+{"uuid":"5c408d4b-9308-46ed-b9c1-82c370b4d8f9","name":"Scenario Outline: Verify PUT request for updating UserRoleStatus in User module  with valid endpoint and mandatory fields","children":["53904c35-7960-4194-bb2d-6ef1dcc4381f"],"befores":[],"afters":[],"start":1690492171050,"stop":1690492173303}

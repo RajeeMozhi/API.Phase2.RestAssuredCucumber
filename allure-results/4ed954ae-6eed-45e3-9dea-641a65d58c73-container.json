@@ -1,0 +1,1 @@
+{"uuid":"4ed954ae-6eed-45e3-9dea-641a65d58c73","name":"Scenario Outline: Verify put request for Assignment module  with Invalid endpoint and mandatory fields","children":["5df0170c-8eb7-4164-98ee-d8902ecd744f"],"befores":[],"afters":[],"start":1690469244030,"stop":1690469248121}
